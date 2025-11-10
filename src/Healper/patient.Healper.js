@@ -6,6 +6,6 @@ const patientSchema = Joi.object({
     patientEmail: Joi.string().email().required(),
     patientAge: Joi.number().integer().min(0).max(100),
     patientAddress: Joi.string().required(),
-    patientPhone: Joi.string().length(10).pattern(/^[0-9]+$/).required()  
+    patientPhone: Joi.string().length(10).pattern(/^[0-9]+$/).required() 
 });
 module.exports = patientSchema;

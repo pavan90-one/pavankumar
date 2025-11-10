@@ -8,7 +8,6 @@ const userSchema = new mongoose.Schema({
         required: [true, 'Please provide a name for the patient.'],
         trim: true // Automatically trims whitespace
     },
-
     patientEmail: {
         type: String,
         unique: true, // Ensures email is unique across documents

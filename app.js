@@ -1,22 +1,21 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
+const helmt = require("helmet");
 const dotenv = require("dotenv");
 const bodyParser = require('body-parser');
 dotenv.config();
 app.use(bodyParser.json());
+app.use(helmt());
+app.use(cors());
 const connectDb = require("./src/Database/database")
 const port = process.env._PORT || 6000;
 const patientRoutes = require("./src/Routes/patient.Routes");
-
 app.use(patientRoutes);
-
-// app.all("*",(req,resp,next)=>{
-//   const err =  new Error(`Can't find ${req.originalUrl} on server !`)
-//   err.status="fail";
-//   err.statusCode =404;
-//   next(err)
-// })
-
+const doctorRoutes = require("./src/Routes/doctor.Routes");
+app.use(doctorRoutes);
+const patientDetails = require("./src/Routes/patinetDetails.Routes")
+app.use(patientDetails);
 app.use((err, req, res, next) => {
   console.error(err.stack); // Log the error stack for debugging
   res.status(err.statusCode || 500).json({
