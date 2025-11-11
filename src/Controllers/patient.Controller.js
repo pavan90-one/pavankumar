@@ -28,21 +28,20 @@ exports.GetPatients= async(req,resp,next)=>{
          patientName,PatientEmail,PatientAge,patientsAddress,patientPhone
     */
 exports.SavePatient=async(req,resp,next)=>{ 
- const patientSchema = Joi.object({
-        patientName: Joi.string().min(0).max(30).required(),
-        patientEmail: Joi.string().email().required(),
-        patientAge: Joi.number().integer().min(0).max(100),
-        patientAddress: Joi.string().required(),
-        patientPhone: Joi.string().length(10).pattern(/^[0-9]+$/).required()  
-    });
-      const Objpatient = {
-        patientName: req.body.patientName,
-        patientEmail: req.body.patientEmail,
-        patientAge: req.body.patientAge,
-        patientAddress: req.body.patientAddress,
-        patientPhone:   req.body.patientPhone
+    const  {
+        patientName,
+        patientEmail,
+        patientAge,
+        patientAddress,
+        patientPhone    } = req.body;
+    const patient = {
+        patientName: patientName,
+        patientEmail: patientEmail,
+        patientAge: patientAge,
+        patientAddress: patientAddress,
+        patientPhone:   patientPhone
     }
-    const { error, value } =  validatePatient.validate(Objpatient);
+    const { error, value } =  validatePatient.validate(patient);
    
     if (error) {
         const obj={}
@@ -51,9 +50,9 @@ exports.SavePatient=async(req,resp,next)=>{
          obj.err = error.details[0].message;
       return  resp.status(400).json(obj);
     }
-        Objpatient.patientAge = parseInt(req.body.patientAge)
-        Objpatient.patientPhone= parseInt(req.body.patientPhone); 
-        const result = await AddPatient(Objpatient)
+        patient.patientAge = parseInt(req.body.patientAge)
+        patient.patientPhone= parseInt(req.body.patientPhone); 
+        const result = await AddPatient(patient)
 
         if(result["status"]=="success"){
          const myObject = Object.assign({}, result);
