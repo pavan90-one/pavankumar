@@ -1,0 +1,48 @@
+{
+  "name": "healthgoals",
+  "version": "1.0.0",
+  "description": "patient check the health any time and any where",
+  "keywords": [
+    "health",
+    "doctor",
+    "node",
+    "react",
+    "mongodb",
+    "microservice",
+    "health",
+    "goals"
+  ],
+  "license": "ISC",
+  "author": "pawan",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "cross-env NODE_ENV=test jest --runInBand",
+    "test:watch": "jest --watch",
+    "start": "nodemon app.js"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "cross-env": "^10.1.0",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "helmet": "^8.1.0",
+    "joi": "^18.0.1",
+    "mongoose": "^8.19.3",
+    "nodemon": "^3.1.10"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coverageDirectory": "coverage",
+    "collectCoverageFrom": [
+      "Controllers/**/*.js",
+      "Routes/**/*.js",
+      "Models/**/*.js"
+    ]
+  },
+  "devDependencies": {
+    "jest": "^30.2.0",
+    "supertest": "^7.1.4"
+  }
+}

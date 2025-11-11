@@ -1,0 +1,11 @@
+{
+    "doctorName":"Admin",
+    "doctorEmail":"Admin@gmail.com",
+    "doctorPhone":"9488146343",
+    "doctorExperince":10,
+    "doctorPassword":"Admin",
+    "doctorRoll":"doctor",
+    "doctorSpecializations":"skin",
+     "doctorLocation":"Nellore",
+    "doctorAddress":"Nellore"
+}
